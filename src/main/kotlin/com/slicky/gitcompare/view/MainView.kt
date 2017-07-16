@@ -46,7 +46,7 @@ class MainView : View("GitCompare") {
             }
 
             right = form {
-                prefWidth = 280.0
+                prefWidth = 325.0
 
                 fieldset("Parameters") {
                     field("Language") {
@@ -57,7 +57,7 @@ class MainView : View("GitCompare") {
                     field("Size in bytes") {
                         hbox {
                             integerfield(github.model.sizeAmount) {
-                                prefWidth = 80.0
+                                prefWidth = 100.0
                             }.required()
                             spinner(listOf(LessThan, EqualsLessThan, EqualsWith, EqualsMoreThan, MoreThan).observable()) {
                                 increment(3) // set to "EqualsMoreThan"
@@ -68,7 +68,7 @@ class MainView : View("GitCompare") {
                     field("Stars") {
                         hbox {
                             integerfield(github.model.starsAmount) {
-                                prefWidth = 80.0
+                                prefWidth = 100.0
                             }.required()
                             spinner(listOf(LessThan, EqualsLessThan, EqualsWith, EqualsMoreThan, MoreThan).observable()) {
                                 increment(3) // set to "EqualsMoreThan"
@@ -79,7 +79,7 @@ class MainView : View("GitCompare") {
                     field("Forks") {
                         hbox {
                             integerfield(github.model.forksAmount) {
-                                prefWidth = 80.0
+                                prefWidth = 100.0
                             }.required()
                             spinner(listOf(LessThan, EqualsLessThan, EqualsWith, EqualsMoreThan, MoreThan).observable()) {
                                 increment(3) // set to "EqualsMoreThan"
@@ -112,7 +112,7 @@ class MainView : View("GitCompare") {
                     field("Period") {
                         hbox {
                             integerfield(github.model.periodAmount) {
-                                prefWidth = 80.0
+                                prefWidth = 100.0
                                 textProperty().onChange { github.calculateApprox() }
                             }.required()
                             spinner(listOf(Days, Weeks, Months, Years).observable()) {
