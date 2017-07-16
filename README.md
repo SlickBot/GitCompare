@@ -25,7 +25,7 @@ with username and password properties representing Github credentials. Example:
 > password=hunter2
 
 ### Screenshot
-<img src="screenshot/screenshoot.gif" height="375" alt="Screen"/>
+<img src="screenshot/screenshoot.png" height="375" alt="Screen"/>
 
 ### Dependencies
 - [Kotlin](https://github.com/JetBrains/kotlin)
