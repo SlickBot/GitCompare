@@ -14,7 +14,7 @@ AppiumCompare is used to compare applications.
 - AppiumCompare ([HERE](https://github.com/SlickBot/AppiumCompare/))
 
 ## GitCompare
-<img src="logo.png" height="200" alt="Logo"/>
+<img src="screenshot/logo.png" height="200" alt="Logo"/>
 
 This is a program, which shows graph of projects created for selected language.
 
