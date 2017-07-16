@@ -27,7 +27,7 @@ password=hunter2
 ```
 
 ### Screenshot
-<img src="screenshot/screenshoot.png" height="375" alt="Screen"/>
+<img src="screenshot/screenshot.png" height="375" alt="Screen"/>
 
 ### Dependencies
 - [Kotlin](https://github.com/JetBrains/kotlin)
