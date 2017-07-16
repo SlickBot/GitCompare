@@ -21,8 +21,10 @@ This is a program, which shows graph of projects created for selected language.
 To speed up the process, add "github.properties" file to project root directory
 with username and password properties representing Github credentials. Example:
 
-> username=sampleusername
-> password=hunter2
+```
+username=sampleusername
+password=hunter2
+```
 
 ### Screenshot
 <img src="screenshot/screenshoot.png" height="375" alt="Screen"/>
