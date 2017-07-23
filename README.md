@@ -18,7 +18,7 @@ AppiumCompare is used to compare applications.
 
 This is a program, which shows graph of projects created for selected language.
 
-To speed up the process, add "github.properties" file to project root directory
+To get more requests per minute (from 10 to 30), add "github.properties" file to project root directory
 with username and password properties representing Github credentials. Example:
 
 ```
@@ -33,4 +33,4 @@ password=hunter2
 - [Kotlin](https://github.com/JetBrains/kotlin)
 *1.1.3-2*
 - [TornadoFX](https://github.com/edvin/tornadofx)
-*4.0.0*
+*1.7.8*
