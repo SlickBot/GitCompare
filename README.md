@@ -1,5 +1,5 @@
 # Fake Social Project
-Fake Social Project is part of my UNI thesis about comparing Android developement with Java versus Android developement with Kotlin.
+Fake Social Project is part of my UNI thesis about comparing Android development with Java versus Android development with Kotlin.
 
 ### Modules
 Project is separated into multiple modules.
@@ -9,6 +9,9 @@ Project is separated into multiple modules.
 
 GitCompare is used to compare languages used on Github.
 - GitCompare (this)
+
+BuildCompare is used to compare build durations.
+- BuildCompare ([HERE](https://github.com/SlickBot/BuildCompare/))
 
 AppiumCompare is used to compare applications.
 - AppiumCompare ([HERE](https://github.com/SlickBot/AppiumCompare/))
@@ -31,6 +34,6 @@ password=hunter2
 
 ### Dependencies
 - [Kotlin](https://github.com/JetBrains/kotlin)
-*1.1.3-2*
+*1.3.31*
 - [TornadoFX](https://github.com/edvin/tornadofx)
-*1.7.8*
+*1.7.17*
