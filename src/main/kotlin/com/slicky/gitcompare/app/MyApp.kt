@@ -8,6 +8,10 @@ import kotlin.system.exitProcess
 
 class MyApp: App(MainView::class, Styles::class) {
 
+    init {
+        dumpStylesheets()
+    }
+
     override fun start(stage: Stage) {
         super.start(stage.apply {
             icons += Image(resources["/github_icon.png"])
@@ -16,4 +20,5 @@ class MyApp: App(MainView::class, Styles::class) {
             setOnCloseRequest { exitProcess(0) }
         })
     }
+
 }

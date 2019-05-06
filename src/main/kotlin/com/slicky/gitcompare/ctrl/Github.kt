@@ -38,8 +38,10 @@ class Github : Controller() {
         try {
             val props = PropertyHandler("github.properties")
             api.setBasicAuth(props["username"], props["password"])
+            println("Github properties found, setting RPM to 30.")
+            model.rpm.value = 30
         } catch (e: Exception) {
-            println("Could not find github properties, setting rpm to 10.")
+            printerr("Could not find github properties, setting RPM to 10.")
             model.rpm.value = 10
         }
     }
@@ -83,7 +85,7 @@ class Github : Controller() {
         // Process each language in row.
         language.value.split(",")
                 .map { it.trim() }
-                .filter { !it.isNullOrEmpty() }
+                .filter { it.isNotEmpty() }
                 .forEach { processNewLanguage(it) }
     }
 
@@ -126,12 +128,16 @@ class Github : Controller() {
             previousDate: LocalDate,
             currentDate: LocalDate
     ) = model.let {
-        GithubSpecialQuery(
+        val list = mutableListOf(
                 Language(language),
                 Size(it.sizeOption.value, it.sizeAmount.value.toInt()),
                 Stars(it.starsOption.value, it.starsAmount.value.toInt()),
                 Forks(it.forksOption.value, it.forksAmount.value.toInt()),
-                Created(previousDate, currentDate))
+                Created(previousDate, currentDate)
+        )
+        if (it.topic.value.isNotBlank())
+            list += Topic(it.topic.value)
+        GithubSpecialQuery(list.toList())
     }
 
     private fun getValidResponse(query: GithubSpecialQuery): RepositoryResponse {
@@ -158,7 +164,7 @@ class Github : Controller() {
         val json = response.one()
         if (response.ok().not())
             throw GithubException { "Response was not 200 OK.\n$json" }
-        return json.toModel<RepositoryResponse>()
+        return json.toModel()
     }
 
     fun calculateApprox() {
@@ -190,7 +196,7 @@ class Github : Controller() {
                 val languageCount = language.value
                         .split(',')
                         .map { it.trim() }
-                        .count { !it.isNullOrEmpty() }
+                        .count { it.isNotEmpty() }
 
                 // Multiply wait time with count of languages
                 val waitTime = Math.ceil(count * waitTimePerRequest).toInt() * languageCount
@@ -225,4 +231,7 @@ class Github : Controller() {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file)
         }
     }
+
+    private fun printerr(s: String) = System.err.println(s)
+
 }

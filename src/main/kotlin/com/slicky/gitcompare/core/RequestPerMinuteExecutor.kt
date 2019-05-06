@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit
  * The "meh" implementation with sleeping (not good).
  */
 class RequestPerMinuteExecutor(var rpmProperty: Property<Number>, name: String = "DelayedExecutor", isDaemon: Boolean = false) {
+
     private val executor = Executors.newSingleThreadExecutor {
         Thread(it).apply {
             this.name = name
@@ -31,4 +32,5 @@ class RequestPerMinuteExecutor(var rpmProperty: Property<Number>, name: String =
     fun shutdownNow(): MutableList<Runnable> = executor.shutdownNow()
 
     private fun Number.toWaitTimeMillis() = (60 / toDouble() * 1000).toLong()
+
 }

@@ -17,25 +17,13 @@ class RepositoryRequest {
     val starsOptionProperty = SimpleObjectProperty<GithubSpecialOperation>(EqualsMoreThan)
     val forksProperty = SimpleIntegerProperty(0)
     val forksOptionProperty = SimpleObjectProperty<GithubSpecialOperation>(EqualsMoreThan)
+    val topicProperty = SimpleStringProperty("")
     val createdFromProperty = SimpleObjectProperty<LocalDate>(LocalDate.now().minusYears(1))
     val createdToProperty = SimpleObjectProperty<LocalDate>(LocalDate.now())
     val periodUnitProperty = SimpleObjectProperty<PeriodUnit>()
     val periodAmountProperty = SimpleIntegerProperty(1)
     val approxProperty = SimpleStringProperty("")
     val rpmProperty = SimpleIntegerProperty(30)
-
-    override fun toString(): String {
-        return "RepositoryRequest(" +
-                "languageProperty=$languageProperty, " +
-                "sizeProperty=$sizeProperty, " +
-                "sizeOptionProperty=$sizeOptionProperty, " +
-                "createdFromProperty=$createdFromProperty, " +
-                "createdToProperty=$createdToProperty, " +
-                "periodUnitProperty=$periodUnitProperty, " +
-                "periodAmountProperty=$periodAmountProperty, " +
-                "approxProperty=$approxProperty, " +
-                "rpmProperty=$rpmProperty)"
-    }
 }
 
 class RepositoryRequestModel(val request: RepositoryRequest) : ViewModel() {
@@ -46,6 +34,7 @@ class RepositoryRequestModel(val request: RepositoryRequest) : ViewModel() {
     val starsOption = bind { request.starsOptionProperty }
     val forksAmount = bind { request.forksProperty }
     val forksOption = bind { request.forksOptionProperty }
+    val topic = bind { request.topicProperty }
     val createdFrom = bind { request.createdFromProperty }
     val createdTo = bind { request.createdToProperty }
     val periodAmount = bind { request.periodAmountProperty }

@@ -7,6 +7,7 @@ import javafx.application.Platform
 import javafx.scene.chart.AreaChart
 import javafx.scene.chart.CategoryAxis
 import javafx.scene.chart.NumberAxis
+import javafx.scene.chart.XYChart
 import javafx.scene.control.DatePicker
 import javafx.scene.control.ProgressIndicator
 import javafx.scene.layout.BorderPane
@@ -14,12 +15,13 @@ import tornadofx.*
 import java.time.LocalDate
 
 class MainView : View("GitCompare") {
+
     private val github: Github by inject()
 
     lateinit var mainPane: BorderPane
     lateinit var indicator: ProgressIndicator
 
-    lateinit var graph: AreaChart<String, Number>
+    lateinit var graph: XYChart<String, Number>
 
     var isLoading: Boolean = false
         set(value) {
@@ -39,8 +41,9 @@ class MainView : View("GitCompare") {
             center {
                 graph = areachart(
                         x = CategoryAxis().apply { label = "Time period" },
-                        y = NumberAxis().apply { label = "Repositories created" }
+                        y = NumberAxis().apply { label = "Repositories" }
                 ) {
+                    addClass(Styles.mGraph)
                     createSymbols = false
                 }
             }
@@ -53,6 +56,11 @@ class MainView : View("GitCompare") {
                         textfield(github.model.language) {
                             textProperty().onChange { github.calculateApprox() }
                         }.required()
+                    }
+                    field("Topic") {
+                        textfield(github.model.topic) {
+                            prefWidth = 100.0
+                        }
                     }
                     field("Size in bytes") {
                         hbox {
@@ -149,4 +157,5 @@ class MainView : View("GitCompare") {
             isVisible = false
         }
     }
+
 }

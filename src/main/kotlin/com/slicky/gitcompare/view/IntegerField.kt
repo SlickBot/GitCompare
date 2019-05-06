@@ -10,6 +10,7 @@ import tornadofx.*
  * Created by SlickyPC on 25.5.2017
  */
 class IntegerField : TextField() {
+
     val integerProperty = SimpleObjectProperty<Number>()
 
     init {
@@ -19,14 +20,14 @@ class IntegerField : TextField() {
     }
 }
 
-fun EventTarget.integerfield(value: Number? = null, op: (IntegerField.() -> Unit)? = null): IntegerField {
+fun EventTarget.integerfield(value: Number? = null, op: (IntegerField.() -> Unit) = {}): IntegerField {
     val field = IntegerField().apply {
         value?.let { integerProperty.value = value }
     }
-    return tornadofx.opcr(this, field, op)
+    return opcr(this, field, op)
 }
 
-fun EventTarget.integerfield(property: Property<Number>, op: (IntegerField.() -> Unit)? = null): IntegerField {
+fun EventTarget.integerfield(property: Property<Number>, op: (IntegerField.() -> Unit) = {}): IntegerField {
     return integerfield(op = op).apply {
         bind(property)
     }

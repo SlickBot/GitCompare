@@ -20,4 +20,5 @@ class EditableDateCell(val op: EditableDateCell.(LocalDate?) -> Boolean) : DateC
             if (!value)
                 style = "-fx-background-color: #ffc0cb;"
         }
+
 }

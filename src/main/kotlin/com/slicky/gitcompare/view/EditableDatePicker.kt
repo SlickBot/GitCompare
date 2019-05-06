@@ -33,7 +33,8 @@ class EditableDatePicker : DatePicker() {
     }
 }
 
-fun EventTarget.editabledatepicker(op: (EditableDatePicker.() -> Unit)? = null) = opcr(this, EditableDatePicker(), op)
+fun EventTarget.editabledatepicker(op: (EditableDatePicker.() -> Unit) = {}) = opcr(this, EditableDatePicker(), op)
+
 fun EventTarget.editabledatepicker(property: Property<LocalDate>, op: (EditableDatePicker.() -> Unit)? = null) = editabledatepicker().apply {
     bind(property)
     op?.invoke(this)

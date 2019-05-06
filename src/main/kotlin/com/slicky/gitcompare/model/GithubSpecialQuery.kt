@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 /**
  * Created by SlickyPC on 28.5.2017
  */
-class GithubSpecialQuery(vararg params: GithubSpecialParameter) {
+class GithubSpecialQuery(params: List<GithubSpecialParameter>) {
     val string = "?q=${params.joinToString(" ").urlEncoded}"
 }
 
